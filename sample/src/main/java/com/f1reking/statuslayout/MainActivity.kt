@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        statusLayout = StatusLayout.Builder(tv_content).build()
+        statusLayout = StatusLayout.Builder(tv_content)
+            .setLoadingText("加载中...")
+            .setEmptyText("空数据了...")
+            .setErrorText("错误了...")
+            .build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,11 +40,11 @@ class MainActivity : AppCompatActivity() {
                 statusLayout.showLoadingLayout()
                 return true
             }
-            R.id.menu_empty -> {
+            R.id.menu_empty   -> {
                 statusLayout.showEmptyLayout()
                 return true
             }
-            R.id.menu_error -> {
+            R.id.menu_error   -> {
                 statusLayout.showErrorLayout()
                 return true
             }

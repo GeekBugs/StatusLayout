@@ -50,9 +50,7 @@ class StatusLayoutHelper {
         if (currentLayout != view) {
             currentLayout = view
             val parent = view.parent as? ViewGroup
-            if (parent != null) {
-                parent.removeView(view)
-            }
+            parent?.removeView(view)
             parentLayout?.removeViewAt(viewIndex!!)
             parentLayout?.addView(view, viewIndex!!, params)
             return true
@@ -60,7 +58,7 @@ class StatusLayoutHelper {
         return false
     }
 
-    fun defaultLayout(): Boolean {
+    fun setContentLayout(): Boolean {
         return showStatusLayout(contentLayout!!)
     }
 }
