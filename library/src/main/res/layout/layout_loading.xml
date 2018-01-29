@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     >
@@ -17,8 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="加载中"
-        android:textSize="16sp"
         android:textColor="@color/text"
+        android:textSize="16sp"
         />
 
 </LinearLayout>

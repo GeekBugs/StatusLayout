@@ -1,10 +1,12 @@
 package com.f1reking.statuslayout.library
 
+import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 
 /**
@@ -27,6 +29,9 @@ class StatusLayout {
     private var emptyText: String = ""
     private var errorText: String = ""
 
+    @DrawableRes private var emptyImgID: Int = 0
+    @DrawableRes private var errorImgID: Int = 0
+
     private var inflater: LayoutInflater? = null
     private var statusLayoutHelper: StatusLayoutHelper? = null
     private var statusClickListener: StatusClickListener? = null
@@ -48,10 +53,12 @@ class StatusLayout {
         this.emptyLayout = builder.emptyLayout
         this.emptyLayoutID = builder.emptyLayoutID
         this.emptyText = builder.emptyText
+        this.emptyImgID = builder.emptyImgID
 
         this.errorLayout = builder.errorLayout
         this.errorLayoutID = builder.errorLayoutID
         this.errorText = builder.errorText
+        this.errorImgID = builder.errorImgID
 
         this.statusClickListener = builder.statusClickListener
         this.statusLayoutHelper = StatusLayoutHelper(contentLayout)
@@ -102,11 +109,16 @@ class StatusLayout {
             return
         }
 
-        val view = emptyLayout!!.findViewById<TextView>(R.id.tv_click_empty)
-        if (null == view) { //防止自定义布局ID出错
+        if (emptyImgID > 0) {
+            val emptyImageView = emptyLayout!!.findViewById<ImageView>(R.id.iv_status_empty)
+            emptyImageView?.setImageResource(emptyImgID)
+        }
+
+        val emptyClickView = emptyLayout!!.findViewById<TextView>(R.id.tv_click_empty)
+        if (null == emptyClickView) { //防止自定义布局ID出错
             return
         }
-        view.setOnClickListener {
+        emptyClickView.setOnClickListener {
             statusClickListener!!.onEmptyClick(it)
         }
     }
@@ -129,6 +141,11 @@ class StatusLayout {
         }
         if (statusClickListener == null) { //防止出错
             return
+        }
+
+        if (errorImgID > 0) {
+            val emptyImageView = errorLayout!!.findViewById<ImageView>(R.id.iv_status_error)
+            emptyImageView?.setImageResource(errorImgID)
         }
 
         val view = errorLayout!!.findViewById<TextView>(R.id.tv_click_error)
@@ -154,6 +171,9 @@ class StatusLayout {
         var loadingText: String = ""
         var emptyText: String = ""
         var errorText: String = ""
+
+        @DrawableRes var emptyImgID: Int = 0
+        @DrawableRes var errorImgID: Int = 0
 
         lateinit var statusClickListener: StatusClickListener
 
@@ -203,6 +223,11 @@ class StatusLayout {
             return this
         }
 
+        fun setEmptyImg(@DrawableRes emptyImgID: Int): Builder {
+            this.emptyImgID = emptyImgID
+            return this
+        }
+
         fun setEmptyText(@StringRes emptyTextStringRes: Int): Builder {
             this.emptyText = contentLayout?.context?.resources?.getString(emptyTextStringRes)!!
             return this
@@ -220,6 +245,11 @@ class StatusLayout {
 
         fun setErrorText(errorText: String): Builder {
             this.errorText = errorText
+            return this
+        }
+
+        fun setErrorImg(@DrawableRes errorImgID: Int): Builder {
+            this.errorImgID = errorImgID
             return this
         }
 
