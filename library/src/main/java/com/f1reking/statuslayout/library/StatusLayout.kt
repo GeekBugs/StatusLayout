@@ -29,6 +29,7 @@ class StatusLayout {
 
     private var inflater: LayoutInflater? = null
     private var statusLayoutHelper: StatusLayoutHelper? = null
+    private var statusClickListener: StatusClickListener? = null
 
     private fun inflater(@LayoutRes resource: Int): View {
         if (null == inflater) {
@@ -52,6 +53,7 @@ class StatusLayout {
         this.errorLayoutID = builder.errorLayoutID
         this.errorText = builder.errorText
 
+        this.statusClickListener = builder.statusClickListener
         this.statusLayoutHelper = StatusLayoutHelper(contentLayout)
     }
 
@@ -96,8 +98,18 @@ class StatusLayout {
             val emptyTextView = emptyLayout!!.findViewById<TextView>(R.id.tv_status_empty)
             emptyTextView?.text = emptyText
         }
-    }
+        if (statusClickListener == null) { //防止出错
+            return
+        }
 
+        val view = emptyLayout!!.findViewById<TextView>(R.id.tv_click_empty)
+        if (null == view) { //防止自定义布局ID出错
+            return
+        }
+        view.setOnClickListener {
+            statusClickListener!!.onEmptyClick(it)
+        }
+    }
 
     /**
      * 显示错误布局
@@ -114,6 +126,17 @@ class StatusLayout {
         if (!TextUtils.isEmpty(errorText)) {
             val errorTextView = errorLayout!!.findViewById<TextView>(R.id.tv_status_error)
             errorTextView?.text = errorText
+        }
+        if (statusClickListener == null) { //防止出错
+            return
+        }
+
+        val view = errorLayout!!.findViewById<TextView>(R.id.tv_click_error)
+        if (null == view) { //防止自定义布局ID出错
+            return
+        }
+        view.setOnClickListener {
+            statusClickListener!!.onErrorClick(it)
         }
     }
 
@@ -132,12 +155,13 @@ class StatusLayout {
         var emptyText: String = ""
         var errorText: String = ""
 
+        lateinit var statusClickListener: StatusClickListener
+
         constructor(contentLayout: View) {
             this.contentLayout = contentLayout
             this.loadingLayoutID = R.layout.layout_loading
             this.emptyLayoutID = R.layout.layout_empty
             this.errorLayoutID = R.layout.layout_error
-
         }
 
         fun build(): StatusLayout {
@@ -204,6 +228,9 @@ class StatusLayout {
             return this
         }
 
-
+        fun setStatusClickListener(listener: StatusClickListener): Builder {
+            this.statusClickListener = listener
+            return this
+        }
     }
 }

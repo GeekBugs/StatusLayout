@@ -8,4 +8,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#455A64</color>
 
+    <color name="white">#ffffff</color>
+    <color name="title">#333333</color>
+    <color name="text">#888888</color>
 </resources>
