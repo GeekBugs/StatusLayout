@@ -4,8 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 
-
-
 /**
  * @author: F1ReKing
  * @date: 2018/1/29 10:35
@@ -37,8 +35,7 @@ class StatusLayoutHelper {
         val count = parentLayout?.childCount
 
         for (index in 0 until count!!) {
-            if (contentLayout === parentLayout?.getChildAt(
-                    index)) { // 获取 contentLayout 在 parentLayout 中的位置
+            if (contentLayout === parentLayout?.getChildAt(index)) {
                 this.viewIndex = index
                 break
             }
@@ -46,7 +43,7 @@ class StatusLayoutHelper {
         this.currentLayout = this.contentLayout
     }
 
-    fun showStatusLayout(view: View): Boolean {
+    fun showStatusLayout(view: View?): Boolean {
         if (null == view) {
             return false
         }

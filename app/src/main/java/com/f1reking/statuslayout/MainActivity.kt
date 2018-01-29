@@ -1,12 +1,9 @@
 package com.f1reking.statuslayout
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.ContextMenu.ContextMenuInfo
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.f1reking.statuslayout.library.StatusLayout
 import kotlinx.android.synthetic.main.activity_main.tv_content
 
