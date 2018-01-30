@@ -7,7 +7,22 @@
 
 
 ## 引入
+#### Step 1. Add the JitPack repository to your build file
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://www.jitpack.io' }
+		}
+	}
+```
 
+#### Step 2. Add the dependency
+```
+	dependencies {
+	       compile 'com.github.F1ReKing:StatusLayout:1.0.0'
+	}
+```
 
 ## 使用
 
@@ -15,7 +30,7 @@
 ## License
 
 ```
-Copyright 2017 F1ReKing. 
+Copyright 2018 F1ReKing. 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
