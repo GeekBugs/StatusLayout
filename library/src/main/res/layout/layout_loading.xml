@@ -20,6 +20,7 @@
         android:text="加载中"
         android:textColor="@color/text"
         android:textSize="16sp"
+        android:gravity="center"
         />
 
 </LinearLayout>

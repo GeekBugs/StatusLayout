@@ -9,15 +9,17 @@
 
     <ImageView
         android:id="@+id/iv_status_empty"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_empty"
         />
 
     <TextView
         android:id="@+id/tv_status_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="数据为空"
         android:textColor="@color/title"
         android:textSize="16sp"
@@ -27,12 +29,10 @@
         android:id="@+id/tv_click_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_bg_click"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="10dp"
         android:text="刷新"
         android:textColor="@color/click"
         android:textSize="14sp"

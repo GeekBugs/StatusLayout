@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.f1reking.statuslayout.R.id.tv_content
 import com.f1reking.statuslayout.library.StatusClickListener
 import com.f1reking.statuslayout.library.StatusLayout
 import kotlinx.android.synthetic.main.activity_main.tv_content
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         statusLayout = StatusLayout.Builder(tv_content)
             .setLoadingText("加载中...")
-            .setEmptyText("空数据了...")
+            .setEmptyText("空数据了\ndadwadwadwad")
             .setErrorText("错误了...")
             .setStatusClickListener(object :StatusClickListener{
                 override fun onEmptyClick(view: View) {

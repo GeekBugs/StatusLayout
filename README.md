@@ -10,18 +10,18 @@
 #### Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://www.jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://www.jitpack.io' }
 	}
+}
 ```
 
 #### Step 2. Add the dependency
 ```
-	dependencies {
-	       compile 'com.github.F1ReKing:StatusLayout:1.0.0'
-	}
+dependencies {
+       compile 'com.github.F1ReKing:StatusLayout:1.0.0'
+}
 ```
 
 ## 使用
