@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">library</string>
+    <string name="empty_click">刷新</string>
+    <string name="error_click">重新加载</string>
+    <string name="error_text">发生错误，请重试</string>
+    <string name="empty_text">数据为空</string>
 </resources>

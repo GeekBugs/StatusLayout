@@ -29,8 +29,16 @@ class StatusLayout {
     private var emptyText: String = ""
     private var errorText: String = ""
 
+    private var emptyClickText: String = ""
+    private var errorClickText: String = ""
+
     @DrawableRes private var emptyImgID: Int = 0
     @DrawableRes private var errorImgID: Int = 0
+
+    private var emptyTextColorRes: Int = 0
+    private var errorTextColorRes: Int = 0
+    private var emptyClickTextColorRes: Int = 0
+    private var errorClickTextColorRes: Int = 0
 
     private var inflater: LayoutInflater? = null
     private var statusLayoutHelper: StatusLayoutHelper? = null
@@ -59,6 +67,15 @@ class StatusLayout {
         this.errorLayoutID = builder.errorLayoutID
         this.errorText = builder.errorText
         this.errorImgID = builder.errorImgID
+
+        this.emptyClickText = builder.emptyClickText
+        this.errorClickText = builder.errorClickText
+
+        this.emptyTextColorRes = builder.emptyTextColorRes
+        this.errorTextColorRes = builder.errorTextColorRes
+
+        this.emptyClickTextColorRes = builder.emptyClickTextColorRes
+        this.errorClickTextColorRes = builder.errorClickTextColorRes
 
         this.statusClickListener = builder.statusClickListener
         this.statusLayoutHelper = StatusLayoutHelper(contentLayout)
@@ -101,10 +118,14 @@ class StatusLayout {
         if (null == emptyLayout) {
             emptyLayout = inflater(emptyLayoutID)
         }
+
+        val emptyTextView = emptyLayout!!.findViewById<TextView>(R.id.tv_status_empty)
+
         if (!TextUtils.isEmpty(emptyText)) {
-            val emptyTextView = emptyLayout!!.findViewById<TextView>(R.id.tv_status_empty)
             emptyTextView?.text = emptyText
         }
+        emptyTextView.setTextColor(emptyTextColorRes)
+
         if (statusClickListener == null) { //防止出错
             return
         }
@@ -114,10 +135,16 @@ class StatusLayout {
             emptyImageView?.setImageResource(emptyImgID)
         }
 
-        val emptyClickView = emptyLayout!!.findViewById<TextView>(R.id.tv_click_empty)
+        val emptyClickView = emptyLayout!!.findViewById(R.id.tv_click_empty) as TextView
         if (null == emptyClickView) { //防止自定义布局ID出错
             return
         }
+
+        if (!TextUtils.isEmpty(emptyClickText)) {
+            emptyClickView.text = emptyClickText
+        }
+        emptyClickView.setTextColor(emptyClickTextColorRes)
+
         emptyClickView.setOnClickListener {
             statusClickListener!!.onEmptyClick(it)
         }
@@ -135,10 +162,11 @@ class StatusLayout {
         if (null == errorLayout) {
             errorLayout = inflater(errorLayoutID)
         }
+        val errorTextView = errorLayout!!.findViewById<TextView>(R.id.tv_status_error)
         if (!TextUtils.isEmpty(errorText)) {
-            val errorTextView = errorLayout!!.findViewById<TextView>(R.id.tv_status_error)
             errorTextView?.text = errorText
         }
+        errorTextView.setTextColor(errorTextColorRes)
         if (statusClickListener == null) { //防止出错
             return
         }
@@ -148,11 +176,17 @@ class StatusLayout {
             emptyImageView?.setImageResource(errorImgID)
         }
 
-        val view = errorLayout!!.findViewById<TextView>(R.id.tv_click_error)
-        if (null == view) { //防止自定义布局ID出错
+        val errorClickView = errorLayout!!.findViewById(R.id.tv_click_error) as TextView
+        if (null == errorClickView) { //防止自定义布局ID出错
             return
         }
-        view.setOnClickListener {
+
+        if (!TextUtils.isEmpty(errorClickText)) {
+            errorClickView.text = errorClickText
+        }
+        errorClickView.setTextColor(errorClickTextColorRes)
+
+        errorClickView.setOnClickListener {
             statusClickListener!!.onErrorClick(it)
         }
     }
@@ -172,8 +206,16 @@ class StatusLayout {
         var emptyText: String = ""
         var errorText: String = ""
 
+        var emptyClickText: String = ""
+        var errorClickText: String = ""
+
         @DrawableRes var emptyImgID: Int = 0
         @DrawableRes var errorImgID: Int = 0
+
+        var emptyTextColorRes: Int = 0
+        var errorTextColorRes: Int = 0
+        var emptyClickTextColorRes: Int = 0
+        var errorClickTextColorRes: Int = 0
 
         lateinit var statusClickListener: StatusClickListener
 
@@ -182,6 +224,10 @@ class StatusLayout {
             this.loadingLayoutID = R.layout.layout_loading
             this.emptyLayoutID = R.layout.layout_empty
             this.errorLayoutID = R.layout.layout_error
+            this.emptyTextColorRes = contentLayout.context.resources.getColor(R.color.title)
+            this.errorTextColorRes = contentLayout.context.resources.getColor(R.color.title)
+            this.emptyClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
+            this.errorClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
         }
 
         fun build(): StatusLayout {
@@ -218,18 +264,39 @@ class StatusLayout {
             return this
         }
 
-        fun setEmptyText(emptyText: String): Builder {
-            this.emptyText = emptyText
-            return this
-        }
-
         fun setEmptyImg(@DrawableRes emptyImgID: Int): Builder {
             this.emptyImgID = emptyImgID
             return this
         }
 
+        fun setEmptyText(emptyText: String): Builder {
+            this.emptyText = emptyText
+            return this
+        }
+
         fun setEmptyText(@StringRes emptyTextStringRes: Int): Builder {
             this.emptyText = contentLayout?.context?.resources?.getString(emptyTextStringRes)!!
+            return this
+        }
+
+        fun setEmptyClickText(emptyClickText: String): Builder {
+            this.emptyClickText = emptyClickText
+            return this
+        }
+
+        fun setEmptyClickText(@StringRes emptyClickTextStringRes: Int): Builder {
+            this.emptyClickText = contentLayout?.context?.resources?.getString(
+                emptyClickTextStringRes)!!
+            return this
+        }
+
+        fun setEmptyTextColor(emptyTextStringRes: Int): Builder {
+            this.emptyTextColorRes = emptyTextStringRes
+            return this
+        }
+
+        fun setEmptyClickTextColor(emptyClickTextColorRes: Int): Builder {
+            this.emptyClickTextColorRes = emptyClickTextColorRes
             return this
         }
 
@@ -243,18 +310,39 @@ class StatusLayout {
             return this
         }
 
-        fun setErrorText(errorText: String): Builder {
-            this.errorText = errorText
-            return this
-        }
-
         fun setErrorImg(@DrawableRes errorImgID: Int): Builder {
             this.errorImgID = errorImgID
             return this
         }
 
+        fun setErrorText(errorText: String): Builder {
+            this.errorText = errorText
+            return this
+        }
+
         fun setErrorText(@StringRes errorTextStringRes: Int): Builder {
             this.errorText = contentLayout?.context?.resources?.getString(errorTextStringRes)!!
+            return this
+        }
+
+        fun setErrorClickText(errorClickText: String): Builder {
+            this.errorClickText = errorClickText
+            return this
+        }
+
+        fun setErrorClickText(@StringRes errorClickTextStringRes: Int): Builder {
+            this.errorClickText = contentLayout?.context?.resources?.getString(
+                errorClickTextStringRes)!!
+            return this
+        }
+
+        fun setErrorTextColor(errorTextStringRes: Int): Builder {
+            this.errorTextColorRes = errorTextStringRes
+            return this
+        }
+
+        fun setErrorClickTextColor(errorClickTextColorRes: Int): Builder {
+            this.errorClickTextColorRes = errorClickTextColorRes
             return this
         }
 

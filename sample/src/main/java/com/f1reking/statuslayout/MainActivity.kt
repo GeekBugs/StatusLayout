@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.f1reking.statuslayout.R.id.tv_content
 import com.f1reking.statuslayout.library.StatusClickListener
 import com.f1reking.statuslayout.library.StatusLayout
 import kotlinx.android.synthetic.main.activity_main.tv_content
@@ -24,17 +23,25 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         statusLayout = StatusLayout.Builder(tv_content)
             .setLoadingText("加载中...")
-            .setEmptyText("空数据了\ndadwadwadwad")
+            .setEmptyText("空数据了")
             .setErrorText("错误了...")
-            .setStatusClickListener(object :StatusClickListener{
+            .setEmptyClickText("刷新...")
+            .setErrorClickText("重新加载...")
+            .setErrorTextColor(R.color.material_blue_grey_900)
+            .setErrorClickTextColor(R.color.material_blue_grey_900)
+            .setEmptyTextColor(R.color.material_blue_grey_900)
+            .setEmptyClickTextColor(R.color.material_blue_grey_900)
+            .setStatusClickListener(object : StatusClickListener {
                 override fun onEmptyClick(view: View) {
                     println("数据空")
-                    Toast.makeText(this@MainActivity,"数据空",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "数据空", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 override fun onErrorClick(view: View) {
                     println("错误")
-                    Toast.makeText(this@MainActivity,"错误",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "错误", Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
             .build()

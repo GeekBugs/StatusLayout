@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="发生错误，请重试"
+        android:text="@string/error_text"
         android:textColor="@color/title"
         android:textSize="16sp"
         />
@@ -33,7 +33,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:padding="10dp"
-        android:text="重新加载"
+        android:text="@string/error_click"
         android:textColor="@color/click"
         android:textSize="14sp"
         />
