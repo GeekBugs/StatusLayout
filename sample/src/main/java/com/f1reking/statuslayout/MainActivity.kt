@@ -6,8 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.f1reking.statuslayout.library.StatusClickListener
-import com.f1reking.statuslayout.library.StatusLayout
+import com.f1reking.library.statuslayout.StatusClickListener
+import com.f1reking.library.statuslayout.StatusLayout
 import kotlinx.android.synthetic.main.activity_main.tv_content
 
 class MainActivity : AppCompatActivity() {
@@ -52,25 +52,27 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_content -> {
-                statusLayout.showContentLayout()
-                return true
-            }
-            R.id.menu_loading -> {
-                statusLayout.showLoadingLayout()
-                return true
-            }
-            R.id.menu_empty   -> {
-                statusLayout.showEmptyLayout()
-                return true
-            }
-            R.id.menu_error   -> {
-                statusLayout.showErrorLayout()
-                return true
-            }
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.menu_content -> consume {
+            statusLayout.showContentLayout()
         }
-        return super.onOptionsItemSelected(item)
+
+        R.id.menu_loading -> consume {
+            statusLayout.showLoadingLayout()
+        }
+
+        R.id.menu_empty   -> consume {
+            statusLayout.showEmptyLayout()
+        }
+
+        R.id.menu_error   -> consume {
+            statusLayout.showErrorLayout()
+        }
+        else              -> super.onOptionsItemSelected(item)
     }
+}
+
+inline fun consume(f: () -> Unit): Boolean {
+    f()
+    return true
 }

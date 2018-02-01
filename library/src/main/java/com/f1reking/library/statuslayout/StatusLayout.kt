@@ -1,4 +1,4 @@
-package com.f1reking.statuslayout.library
+package com.f1reking.library.statuslayout
 
 import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.f1reking.statuslayout.library.R.color
+import com.f1reking.statuslayout.library.R.id
+import com.f1reking.statuslayout.library.R.layout
 
 /**
  * @author: F1ReKing
@@ -101,7 +104,8 @@ class StatusLayout {
             loadingLayout = inflater(loadingLayoutID)
         }
         if (!TextUtils.isEmpty(loadingText)) {
-            val loadingTextView = loadingLayout!!.findViewById<TextView>(R.id.tv_status_loading)
+            val loadingTextView = loadingLayout!!.findViewById<TextView>(
+                id.tv_status_loading)
             loadingTextView?.text = loadingText
         }
     }
@@ -119,7 +123,8 @@ class StatusLayout {
             emptyLayout = inflater(emptyLayoutID)
         }
 
-        val emptyTextView = emptyLayout!!.findViewById<TextView>(R.id.tv_status_empty)
+        val emptyTextView = emptyLayout!!.findViewById<TextView>(
+            id.tv_status_empty)
 
         if (!TextUtils.isEmpty(emptyText)) {
             emptyTextView?.text = emptyText
@@ -131,11 +136,13 @@ class StatusLayout {
         }
 
         if (emptyImgID > 0) {
-            val emptyImageView = emptyLayout!!.findViewById<ImageView>(R.id.iv_status_empty)
+            val emptyImageView = emptyLayout!!.findViewById<ImageView>(
+                id.iv_status_empty)
             emptyImageView?.setImageResource(emptyImgID)
         }
 
-        val emptyClickView = emptyLayout!!.findViewById(R.id.tv_click_empty) as TextView
+        val emptyClickView = emptyLayout!!.findViewById(
+            id.tv_click_empty) as TextView
         if (null == emptyClickView) { //防止自定义布局ID出错
             return
         }
@@ -162,7 +169,8 @@ class StatusLayout {
         if (null == errorLayout) {
             errorLayout = inflater(errorLayoutID)
         }
-        val errorTextView = errorLayout!!.findViewById<TextView>(R.id.tv_status_error)
+        val errorTextView = errorLayout!!.findViewById<TextView>(
+            id.tv_status_error)
         if (!TextUtils.isEmpty(errorText)) {
             errorTextView?.text = errorText
         }
@@ -172,11 +180,13 @@ class StatusLayout {
         }
 
         if (errorImgID > 0) {
-            val emptyImageView = errorLayout!!.findViewById<ImageView>(R.id.iv_status_error)
+            val emptyImageView = errorLayout!!.findViewById<ImageView>(
+                id.iv_status_error)
             emptyImageView?.setImageResource(errorImgID)
         }
 
-        val errorClickView = errorLayout!!.findViewById(R.id.tv_click_error) as TextView
+        val errorClickView = errorLayout!!.findViewById(
+            id.tv_click_error) as TextView
         if (null == errorClickView) { //防止自定义布局ID出错
             return
         }
@@ -221,13 +231,17 @@ class StatusLayout {
 
         constructor(contentLayout: View) {
             this.contentLayout = contentLayout
-            this.loadingLayoutID = R.layout.layout_loading
-            this.emptyLayoutID = R.layout.layout_empty
-            this.errorLayoutID = R.layout.layout_error
-            this.emptyTextColorRes = contentLayout.context.resources.getColor(R.color.title)
-            this.errorTextColorRes = contentLayout.context.resources.getColor(R.color.title)
-            this.emptyClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
-            this.errorClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
+            this.loadingLayoutID = layout.layout_loading
+            this.emptyLayoutID = layout.layout_empty
+            this.errorLayoutID = layout.layout_error
+            this.emptyTextColorRes = contentLayout.context.resources.getColor(
+                color.title)
+            this.errorTextColorRes = contentLayout.context.resources.getColor(
+                color.title)
+            this.emptyClickTextColorRes = contentLayout.context.resources.getColor(
+                color.click)
+            this.errorClickTextColorRes = contentLayout.context.resources.getColor(
+                color.click)
         }
 
         fun build(): StatusLayout {
