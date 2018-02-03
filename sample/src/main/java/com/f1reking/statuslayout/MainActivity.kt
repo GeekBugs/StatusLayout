@@ -30,20 +30,19 @@ class MainActivity : AppCompatActivity() {
             .setErrorClickText("重新加载...")
             .setEmptyImg(R.drawable.ic_empty_sample)
             .setErrorImg(R.drawable.ic_error_sample)
+            .setLoadingTextColor(R.color.material_blue_grey_900)
             .setErrorTextColor(R.color.material_blue_grey_900)
             .setErrorClickTextColor(R.color.material_blue_grey_900)
             .setEmptyTextColor(R.color.material_blue_grey_900)
             .setEmptyClickTextColor(R.color.material_blue_grey_900)
             .setStatusClickListener(object : StatusClickListener {
                 override fun onEmptyClick(view: View) {
-                    println("数据空")
-                    Toast.makeText(this@MainActivity, "数据空", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, "点击了数据空", Toast.LENGTH_SHORT)
                         .show()
                 }
 
                 override fun onErrorClick(view: View) {
-                    println("错误")
-                    Toast.makeText(this@MainActivity, "错误", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, "点击了错误", Toast.LENGTH_SHORT)
                         .show()
                 }
             })

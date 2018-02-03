@@ -1,13 +1,16 @@
 # StatusLayout
 [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)](https://www.jitpack.io/#F1ReKing/StatusLayout)
 
-一个在Android上可切换状态的布局
+一个在Android上可切换数据状态的布局，包含了加载布局，空数据布局，错误布局
 
 ## 预览图
+<a href="res/statusLayout.gif"><img src="res/statusLayout.gif" width="30%"/></a>
 
 
 ## 引入
+
 #### Step 1. Add the JitPack repository to your build file
+
 ```
 allprojects {
 	repositories {
