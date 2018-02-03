@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-       compile 'com.github.F1ReKing:StatusLayout:1.2.0'
+       compile 'com.github.F1ReKing:StatusLayout:1.2.1'
 }
 ```
 
