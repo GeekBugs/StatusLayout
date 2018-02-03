@@ -1,5 +1,6 @@
 # StatusLayout
 [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)](https://www.jitpack.io/#F1ReKing/StatusLayout)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/F1ReKing/StatusLayout/blob/master/LICENSE)
 
 一个在Android上可切换数据状态的布局，包含了加载布局，空数据布局，错误布局
 
@@ -91,15 +92,15 @@ dependencies {
 
    **注意：自定义layout中id必须与lib中一致**
 
-	| 方法名                                      | 说明       | layout中ID                                |
-	| ---------------------------------------- | -------- | ---------------------------------------- |
-	| setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   | tv_status_loading                        |
-	| setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   | tv_status_loading                        |
-	| setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
-	| setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
-	| setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
-	| setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
-	
+   | 方法名                                      | 说明       | layout中ID                                |
+   | ---------------------------------------- | -------- | ---------------------------------------- |
+   | setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   | tv_status_loading                        |
+   | setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   | tv_status_loading                        |
+   | setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+   | setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+   | setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
+   | setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
+
 2. 配置文字、字体颜色等属性
 
    | 方法名                                      | 说明           |
