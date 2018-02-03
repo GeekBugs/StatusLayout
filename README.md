@@ -12,7 +12,7 @@
 
 ## 预览图
 
-<a href="res/statusLayout.gif"><img src="res/statusLayout.gif" width="30%"/></a>
+<a href="art/statusLayout.gif"><img src="art/statusLayout.gif" width="30%"/></a>
 
 ## 引入
 
@@ -72,18 +72,18 @@ dependencies {
           }).build();
   ```
 
-统一调用
+- 统一调用
 
-```
-//显示内容布局
-mStatusLayout.showContentLayout();
-//显示加载中布局
-mStatusLayout.showLoadingLayout();
-//显示数据空布局
-mStatusLayout.showEmptyLayout();
-//显示数据错误布局
-mStatusLayout.showErrorLayout();
-```
+  ```java
+  //显示内容布局
+  mStatusLayout.showContentLayout();
+  //显示加载中布局
+  mStatusLayout.showLoadingLayout();
+  //显示数据空布局
+  mStatusLayout.showEmptyLayout();
+  //显示数据错误布局
+  mStatusLayout.showErrorLayout();
+  ```
 
 #### API
 
@@ -91,14 +91,14 @@ mStatusLayout.showErrorLayout();
 
    **注意：自定义layout中id必须与lib中一致**
 
-| 方法名                                      | 说明       | layout中ID |
-| ---------------------------------------- | -------- | --------- |
-| setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   |           |
-| setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   |           |
-| setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  |           |
-| setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  |           |
-| setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 |           |
-| setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 |           |
+| 方法名                                      | 说明       | layout中ID                                |
+| ---------------------------------------- | -------- | ---------------------------------------- |
+| setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   | tv_status_loading                        |
+| setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   | tv_status_loading                        |
+| setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+| setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+| setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
+| setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
 
 2. 配置文字、字体颜色等属性
 
