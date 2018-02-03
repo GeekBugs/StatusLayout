@@ -364,7 +364,7 @@ class StatusLayout {
       return this
     }
 
-    fun setStatusClickListener(listener: StatusClickListener): Builder {
+    fun setOnStatusClickListener(listener: StatusClickListener): Builder {
       this.statusClickListener = listener
       return this
     }
