@@ -24,7 +24,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.f1reking.statuslayout.library.R.color
+import com.f1reking.statuslayout.library.R
 import com.f1reking.statuslayout.library.R.id
 import com.f1reking.statuslayout.library.R.layout
 
@@ -239,127 +239,128 @@ class StatusLayout {
       this.loadingLayoutID = layout.layout_loading
       this.emptyLayoutID = layout.layout_empty
       this.errorLayoutID = layout.layout_error
-      this.emptyTextColorRes = contentLayout.context.resources.getColor(color.title)
-      this.errorTextColorRes = contentLayout.context.resources.getColor(color.title)
-      this.emptyClickTextColorRes = contentLayout.context.resources.getColor(color.click)
-      this.errorClickTextColorRes = contentLayout.context.resources.getColor(color.click)
+      this.loadingTextColorRes = contentLayout.context.resources.getColor(R.color.text)
+      this.emptyTextColorRes = contentLayout.context.resources.getColor(R.color.title)
+      this.errorTextColorRes = contentLayout.context.resources.getColor(R.color.title)
+      this.emptyClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
+      this.errorClickTextColorRes = contentLayout.context.resources.getColor(R.color.click)
     }
 
     fun build(): StatusLayout {
       return StatusLayout(this)
     }
 
-    fun setLoadingLayout(@LayoutRes loadingLayoutID: Int): Builder {
+    fun setOnLoadingLayout(@LayoutRes loadingLayoutID: Int): Builder {
       this.loadingLayoutID = loadingLayoutID
       return this
     }
 
-    fun setLoadingLayout(loadingLayout: View): Builder {
+    fun setOnLoadingLayout(loadingLayout: View): Builder {
       this.loadingLayout = loadingLayout
       return this
     }
 
-    fun setLoadingText(loadingText: String): Builder {
+    fun setOnLoadingText(loadingText: String): Builder {
       this.loadingText = loadingText
       return this
     }
 
-    fun setLoadingtext(@StringRes loadingTextStringRes: Int): Builder {
+    fun setOnLoadingtext(@StringRes loadingTextStringRes: Int): Builder {
       this.loadingText = contentLayout?.context?.resources?.getString(loadingTextStringRes)!!
       return this
     }
 
-    fun setLoadingTextColor(loadingTextColorRes: Int): Builder {
-      this.loadingTextColorRes = loadingTextColorRes;
+    fun setOnLoadingTextColor(loadingTextColorRes: Int): Builder {
+      this.loadingTextColorRes = loadingTextColorRes
       return this
     }
 
-    fun setEmptyLayout(@LayoutRes emptyLayoutID: Int): Builder {
+    fun setOnEmptyLayout(@LayoutRes emptyLayoutID: Int): Builder {
       this.emptyLayoutID = emptyLayoutID
       return this
     }
 
-    fun setEmptyLayout(emptyLayout: View): Builder {
+    fun setOnEmptyLayout(emptyLayout: View): Builder {
       this.emptyLayout = emptyLayout
       return this
     }
 
-    fun setEmptyImg(@DrawableRes emptyImgID: Int): Builder {
+    fun setOnEmptyImg(@DrawableRes emptyImgID: Int): Builder {
       this.emptyImgID = emptyImgID
       return this
     }
 
-    fun setEmptyText(emptyText: String): Builder {
+    fun setOnEmptyText(emptyText: String): Builder {
       this.emptyText = emptyText
       return this
     }
 
-    fun setEmptyText(@StringRes emptyTextStringRes: Int): Builder {
+    fun setOnEmptyText(@StringRes emptyTextStringRes: Int): Builder {
       this.emptyText = contentLayout?.context?.resources?.getString(emptyTextStringRes)!!
       return this
     }
 
-    fun setEmptyClickText(emptyClickText: String): Builder {
+    fun setOnEmptyClickText(emptyClickText: String): Builder {
       this.emptyClickText = emptyClickText
       return this
     }
 
-    fun setEmptyClickText(@StringRes emptyClickTextStringRes: Int): Builder {
+    fun setOnEmptyClickText(@StringRes emptyClickTextStringRes: Int): Builder {
       this.emptyClickText = contentLayout?.context?.resources?.getString(emptyClickTextStringRes)!!
       return this
     }
 
-    fun setEmptyTextColor(emptyTextStringRes: Int): Builder {
+    fun setOnEmptyTextColor(emptyTextStringRes: Int): Builder {
       this.emptyTextColorRes = emptyTextStringRes
       return this
     }
 
-    fun setEmptyClickTextColor(emptyClickTextColorRes: Int): Builder {
+    fun setOnEmptyClickTextColor(emptyClickTextColorRes: Int): Builder {
       this.emptyClickTextColorRes = emptyClickTextColorRes
       return this
     }
 
-    fun setErrorLayout(@LayoutRes errorLayoutID: Int): Builder {
+    fun setOnErrorLayout(@LayoutRes errorLayoutID: Int): Builder {
       this.errorLayoutID = errorLayoutID
       return this
     }
 
-    fun setErrorLayout(errorLayout: View): Builder {
+    fun setOnErrorLayout(errorLayout: View): Builder {
       this.errorLayout = errorLayout
       return this
     }
 
-    fun setErrorImg(@DrawableRes errorImgID: Int): Builder {
+    fun setOnErrorImg(@DrawableRes errorImgID: Int): Builder {
       this.errorImgID = errorImgID
       return this
     }
 
-    fun setErrorText(errorText: String): Builder {
+    fun setOnErrorText(errorText: String): Builder {
       this.errorText = errorText
       return this
     }
 
-    fun setErrorText(@StringRes errorTextStringRes: Int): Builder {
+    fun setOnErrorText(@StringRes errorTextStringRes: Int): Builder {
       this.errorText = contentLayout?.context?.resources?.getString(errorTextStringRes)!!
       return this
     }
 
-    fun setErrorClickText(errorClickText: String): Builder {
+    fun setOnErrorClickText(errorClickText: String): Builder {
       this.errorClickText = errorClickText
       return this
     }
 
-    fun setErrorClickText(@StringRes errorClickTextStringRes: Int): Builder {
+    fun setOnErrorClickText(@StringRes errorClickTextStringRes: Int): Builder {
       this.errorClickText = contentLayout?.context?.resources?.getString(errorClickTextStringRes)!!
       return this
     }
 
-    fun setErrorTextColor(errorTextStringRes: Int): Builder {
+    fun setOnErrorTextColor(errorTextStringRes: Int): Builder {
       this.errorTextColorRes = errorTextStringRes
       return this
     }
 
-    fun setErrorClickTextColor(errorClickTextColorRes: Int): Builder {
+    fun setOnErrorClickTextColor(errorClickTextColorRes: Int): Builder {
       this.errorClickTextColorRes = errorClickTextColorRes
       return this
     }

@@ -37,15 +37,15 @@ dependencies {
 
 ## 使用
 
-### 默认使用
+#### 快速用法
 
 - kotlin用法
 
   ```Kotlin
-  private lateinit var statusLayout: StatusLayout
+  private lateinit var mStatusLayout: StatusLayout
 
-  statusLayout = StatusLayout.Builder(congtentLayout)
-          .setStatusClickListener(object : StatusClickListener {
+  mStatusLayout = StatusLayout.Builder(congtentLayout)
+          .setOnStatusClickListener(object : StatusClickListener {
             override fun onEmptyClick(view: View) {
             }
 
@@ -58,12 +58,82 @@ dependencies {
 - Java 用法
 
   ```java
+  private StatusLayout mStatusLayout;
 
+  mStatusLayout =
+     new StatusLayout.Builder(tvcontent).setOnStatusClickListener(new StatusClickListener() {
+            @Override
+            public void onEmptyClick(@NotNull View view) {
+            }
+
+            @Override
+            public void onErrorClick(@NotNull View view) {
+            }
+          }).build();
   ```
 
-  ​
+统一调用
+
+```
+//显示内容布局
+mStatusLayout.showContentLayout();
+//显示加载中布局
+mStatusLayout.showLoadingLayout();
+//显示数据空布局
+mStatusLayout.showEmptyLayout();
+//显示数据错误布局
+mStatusLayout.showErrorLayout();
+```
+
+#### API
+
+1. 配置布局
+
+   **注意：自定义layout中id必须与lib中一致**
+
+| 方法名                                      | 说明       | layout中ID |
+| ---------------------------------------- | -------- | --------- |
+| setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   |           |
+| setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   |           |
+| setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  |           |
+| setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  |           |
+| setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 |           |
+| setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 |           |
+
+2. 配置文字、字体颜色等属性
+
+   | 方法名                                      | 说明           |
+   | ---------------------------------------- | ------------ |
+   | setOnLoadingText(loadingText: String)    | 设置加载提示文字     |
+   | setOnLoadingtext(@StringRes loadingTextStringRes: Int) | 设置加载提示文字     |
+   | setOnLoadingTextColor(loadingTextColorRes: Int) | 设置加载提示文字颜色   |
+   | setOnEmptyText(emptyText: String)        | 设置数据空提示文字    |
+   | setOnEmptyText(@StringRes emptyTextStringRes: Int) | 设置数据空提示文字    |
+   | setOnEmptyClickText(emptyClickText: String) | 设置数据空点击文字    |
+   | setOnEmptyClickText(@StringRes emptyClickTextStringRes: Int) | 设置数据空点击文字    |
+   | setOnEmptyTextColor(emptyTextStringRes: Int) | 设置数据空提示文字颜色  |
+   | setOnEmptyClickTextColor(emptyClickTextColorRes: Int) | 设置数据空点击文字颜色  |
+   | setOnErrorText(errorText: String)        | 设置数据错误提示文字   |
+   | setOnErrorText(@StringRes errorTextStringRes: Int) | 设置数据错误提示文字   |
+   | setOnErrorClickText(errorClickText: String) | 设置数据错误点击文字   |
+   | setOnErrorClickText(@StringRes errorClickTextStringRes: Int) | 设置数据错误点击文字   |
+   | setOnErrorTextColor(errorTextStringRes: Int) | 设置数据错误提示文字颜色 |
+   | setOnErrorClickTextColor(errorClickTextColorRes: Int) | 设置数据错误点击文字颜色 |
+
+3. 配置图片
+
+   | 方法名                                      | 说明       |
+   | ---------------------------------------- | -------- |
+   | setOnEmptyImg(@DrawableRes emptyImgID: Int) | 设置数据空图片  |
+   | setOnErrorImg(@DrawableRes errorImgID: Int) | 设置数据错误图片 |
+
+   ​
 
 ## 版本开发记录
+
+#### v1.2.1
+
+- 修改方法名，避免与kotlin语法冲突
 
 #### v1.2.0
 

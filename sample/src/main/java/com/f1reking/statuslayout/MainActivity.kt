@@ -13,68 +13,68 @@ import kotlinx.android.synthetic.main.activity_main.tv_content
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var statusLayout: StatusLayout
+  private lateinit var statusLayout: StatusLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initView()
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    initView()
+  }
+
+  @SuppressLint("PrivateResource") private fun initView() {
+    statusLayout = StatusLayout.Builder(tv_content)
+        .setOnLoadingText("加载中...")
+        .setOnEmptyText("空数据了")
+        .setOnErrorText("错误了...")
+        .setOnEmptyClickText("刷新...")
+        .setOnErrorClickText("重新加载...")
+        .setOnEmptyImg(R.drawable.ic_empty_sample)
+        .setOnErrorImg(R.drawable.ic_error_sample)
+        .setOnLoadingTextColor(R.color.material_blue_grey_900)
+        .setOnErrorTextColor(R.color.material_blue_grey_900)
+        .setOnErrorClickTextColor(R.color.material_blue_grey_900)
+        .setOnEmptyTextColor(R.color.material_blue_grey_900)
+        .setOnEmptyClickTextColor(R.color.material_blue_grey_900)
+        .setOnStatusClickListener(object : StatusClickListener {
+          override fun onEmptyClick(view: View) {
+            Toast.makeText(this@MainActivity, "点击了数据空", Toast.LENGTH_SHORT)
+                .show()
+          }
+
+          override fun onErrorClick(view: View) {
+            Toast.makeText(this@MainActivity, "点击了错误", Toast.LENGTH_SHORT)
+                .show()
+          }
+        })
+        .build()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_main, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+    R.id.menu_content -> consume {
+      statusLayout.showContentLayout()
     }
 
-    @SuppressLint("PrivateResource") private fun initView() {
-        statusLayout = StatusLayout.Builder(tv_content)
-            .setLoadingText("加载中...")
-            .setEmptyText("空数据了")
-            .setErrorText("错误了...")
-            .setEmptyClickText("刷新...")
-            .setErrorClickText("重新加载...")
-            .setEmptyImg(R.drawable.ic_empty_sample)
-            .setErrorImg(R.drawable.ic_error_sample)
-            .setLoadingTextColor(R.color.material_blue_grey_900)
-            .setErrorTextColor(R.color.material_blue_grey_900)
-            .setErrorClickTextColor(R.color.material_blue_grey_900)
-            .setEmptyTextColor(R.color.material_blue_grey_900)
-            .setEmptyClickTextColor(R.color.material_blue_grey_900)
-            .setStatusClickListener(object : StatusClickListener {
-                override fun onEmptyClick(view: View) {
-                    Toast.makeText(this@MainActivity, "点击了数据空", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                override fun onErrorClick(view: View) {
-                    Toast.makeText(this@MainActivity, "点击了错误", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-            .build()
+    R.id.menu_loading -> consume {
+      statusLayout.showLoadingLayout()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
+    R.id.menu_empty -> consume {
+      statusLayout.showEmptyLayout()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.menu_content -> consume {
-            statusLayout.showContentLayout()
-        }
-
-        R.id.menu_loading -> consume {
-            statusLayout.showLoadingLayout()
-        }
-
-        R.id.menu_empty   -> consume {
-            statusLayout.showEmptyLayout()
-        }
-
-        R.id.menu_error   -> consume {
-            statusLayout.showErrorLayout()
-        }
-        else              -> super.onOptionsItemSelected(item)
+    R.id.menu_error -> consume {
+      statusLayout.showErrorLayout()
     }
+    else -> super.onOptionsItemSelected(item)
+  }
 }
 
 inline fun consume(f: () -> Unit): Boolean {
-    f()
-    return true
+  f()
+  return true
 }
