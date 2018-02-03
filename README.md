@@ -62,13 +62,13 @@ dependencies {
   private StatusLayout mStatusLayout;
 
   mStatusLayout =
-     new StatusLayout.Builder(tvcontent).setOnStatusClickListener(new StatusClickListener() {
+     new StatusLayout.Builder(congtentLayout).setOnStatusClickListener(new StatusClickListener() {
             @Override
-            public void onEmptyClick(@NotNull View view) {
+            public void onEmptyClick(View view) {
             }
 
             @Override
-            public void onErrorClick(@NotNull View view) {
+            public void onErrorClick(View view) {
             }
           }).build();
   ```
