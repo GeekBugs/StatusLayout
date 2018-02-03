@@ -1,5 +1,6 @@
 package com.f1reking.statuslayout
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -20,13 +21,15 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
-    private fun initView() {
+    @SuppressLint("PrivateResource") private fun initView() {
         statusLayout = StatusLayout.Builder(tv_content)
             .setLoadingText("加载中...")
             .setEmptyText("空数据了")
             .setErrorText("错误了...")
             .setEmptyClickText("刷新...")
             .setErrorClickText("重新加载...")
+            .setEmptyImg(R.drawable.ic_empty_sample)
+            .setErrorImg(R.drawable.ic_error_sample)
             .setErrorTextColor(R.color.material_blue_grey_900)
             .setErrorClickTextColor(R.color.material_blue_grey_900)
             .setEmptyTextColor(R.color.material_blue_grey_900)
