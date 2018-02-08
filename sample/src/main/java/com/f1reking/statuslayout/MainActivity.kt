@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         .setOnErrorTextColor(R.color.material_blue_grey_900)
         .setOnErrorClickTextColor(R.color.material_blue_grey_900)
         .setOnEmptyTextColor(R.color.material_blue_grey_900)
-        .setOnEmptyClickTextColor(R.color.material_blue_grey_900)
+        .setOnEmptyClickTextColor(resources.getColor(R.color.white))
         .setOnStatusClickListener(object : StatusClickListener {
           override fun onEmptyClick(view: View) {
             Toast.makeText(this@MainActivity, "点击了数据空", Toast.LENGTH_SHORT)
