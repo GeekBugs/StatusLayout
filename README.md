@@ -33,10 +33,10 @@ allprojects {
 
 ```
 dependencies {
-       compile 'com.github.F1ReKing:StatusLayout:1.2.1'
+       compile 'com.github.F1ReKing:StatusLayout:x.y.z'
 }
 ```
-
+Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)](https://www.jitpack.io/#F1ReKing/StatusLayout)
 ## 使用
 
 #### 快速用法
