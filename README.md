@@ -33,7 +33,7 @@ allprojects {
 
 ```
 dependencies {
-       compile 'com.github.F1ReKing:StatusLayout:x.y.z'
+       implementation 'com.github.F1ReKing:StatusLayout:x.y.z'
 }
 ```
 Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)](https://www.jitpack.io/#F1ReKing/StatusLayout)
