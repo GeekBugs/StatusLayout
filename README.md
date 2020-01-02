@@ -158,6 +158,9 @@ Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)
 - 初始化提交
 - 支持加载布局，空数据布局，出错布局
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/F1ReKing/StatusLayout.svg)](https://starchart.cc/F1ReKing/StatusLayout)
 
 ## License
 
