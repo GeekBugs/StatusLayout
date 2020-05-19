@@ -3,22 +3,22 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/F1ReKing/StatusLayout/blob/master/LICENSE)
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
-> 零入侵布局，可切换数据状态
+> A zero-invasion layout that switches data states
 
-一个在Android上可切换数据状态的布局，包含了加载布局，空数据布局，错误布局
+A layout that can switch the data state on Android, including loading layout, empty data layout, and error layout
 
-## 特性
+## Feature
 
-1. 支持链式调用
-2. 支持动态切换加载，空数据，错误，内容布局
-3. 懒加载布局，没有布局层叠问题
-4. 支持点击监听事件处理
+1. Support chain call
+2. Support dynamic switch loading, empty data, error, content layout
+3. Lazy loading layout, no layout cascading problem
+4. Support click listen event processing
 
-## 预览图
+## Preview
 
 <a href="art/statusLayout.gif"><img src="art/statusLayout.gif" width="30%"/></a>
 
-## 引入
+## Introduce
 
 #### Step 1. Add the JitPack repository to your build file
 
@@ -39,11 +39,12 @@ dependencies {
 }
 ```
 Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)](https://www.jitpack.io/#F1ReKing/StatusLayout)
-## 使用
 
-#### 快速用法
+## Use
 
-- kotlin用法
+#### Quick usage
+
+- kotlin
 
   ```Kotlin
   private lateinit var mStatusLayout: StatusLayout
@@ -59,7 +60,7 @@ Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)
           .build()
   ```
 
-- Java 用法
+- Java
 
   ```java
   private StatusLayout mStatusLayout;
@@ -76,94 +77,62 @@ Current latest version: [![](https://www.jitpack.io/v/F1ReKing/StatusLayout.svg)
           }).build();
   ```
 
-- 统一调用
+- Unified call
 
   ```java
-  //显示内容布局
+  //Display content layout
   mStatusLayout.showContentLayout();
-  //显示加载中布局
+  //Display loading layout
   mStatusLayout.showLoadingLayout();
-  //显示数据空布局
+  //Display empty data layout
   mStatusLayout.showEmptyLayout();
-  //显示数据错误布局
+  //Display data wrong layout
   mStatusLayout.showErrorLayout();
   ```
 
 #### API
 
-1. 配置布局
+1. Configuration layout
 
-   **注意：自定义layout中id必须与lib中一致**
+   **Note: The id in the custom layout must be consistent with the lib**
 
-   | 方法名                                      | 说明       | layout中ID                                |
+   | Method name                                      | Explanation       | layout ID                                |
    | ---------------------------------------- | -------- | ---------------------------------------- |
-   | setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | 配置加载布局   | tv_status_loading                        |
-   | setOnLoadingLayout(loadingLayout: View)  | 配置加载布局   | tv_status_loading                        |
-   | setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
-   | setOnEmptyLayout(emptyLayout: View)      | 配置数据空布局  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
-   | setOnErrorLayout(@LayoutRes errorLayoutID: Int) | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
-   | setOnErrorLayout(errorLayout: View)      | 配置数据错误布局 | iv_status_error<br />tv_status_error<br />tv_click_error |
+   | setOnLoadingLayout(@LayoutRes loadingLayoutID: Int) | Configure loading layout   | tv_status_loading                        |
+   | setOnLoadingLayout(loadingLayout: View)  | Configure loading layout   | tv_status_loading                        |
+   | setOnEmptyLayout(@LayoutRes emptyLayoutID: Int) | Configure data empty layout  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+   | setOnEmptyLayout(emptyLayout: View)      | Configure data empty layout  | iv_status_empty<br />tv_status_empty<br />tv_click_empty |
+   | setOnErrorLayout(@LayoutRes errorLayoutID: Int) | Configuration data error layout | iv_status_error<br />tv_status_error<br />tv_click_error |
+   | setOnErrorLayout(errorLayout: View)      | Configuration data error layout | iv_status_error<br />tv_status_error<br />tv_click_error |
 
-2. 配置文字、字体颜色等属性
+2. Configure text, font color and other attributes
 
-   | 方法名                                      | 说明           |
+   | Method name                                      | Explanation           |
    | ---------------------------------------- | ------------ |
-   | setOnLoadingText(loadingText: String)    | 设置加载提示文字     |
-   | setOnLoadingtext(@StringRes loadingTextStringRes: Int) | 设置加载提示文字     |
-   | setOnLoadingTextColor(loadingTextColorRes: Int) | 设置加载提示文字颜色   |
-   | setOnEmptyText(emptyText: String)        | 设置数据空提示文字    |
-   | setOnEmptyText(@StringRes emptyTextStringRes: Int) | 设置数据空提示文字    |
-   | setOnEmptyClickText(emptyClickText: String) | 设置数据空点击文字    |
-   | setOnEmptyClickText(@StringRes emptyClickTextStringRes: Int) | 设置数据空点击文字    |
-   | setOnEmptyTextColor(emptyTextStringRes: Int) | 设置数据空提示文字颜色  |
-   | setOnEmptyClickTextColor(emptyClickTextColorRes: Int) | 设置数据空点击文字颜色  |
-   | setOnErrorText(errorText: String)        | 设置数据错误提示文字   |
-   | setOnErrorText(@StringRes errorTextStringRes: Int) | 设置数据错误提示文字   |
-   | setOnErrorClickText(errorClickText: String) | 设置数据错误点击文字   |
-   | setOnErrorClickText(@StringRes errorClickTextStringRes: Int) | 设置数据错误点击文字   |
-   | setOnErrorTextColor(errorTextStringRes: Int) | 设置数据错误提示文字颜色 |
-   | setOnErrorClickTextColor(errorClickTextColorRes: Int) | 设置数据错误点击文字颜色 |
+   | setOnLoadingText(loadingText: String)    | Set loading prompt text     |
+   | setOnLoadingtext(@StringRes loadingTextStringRes: Int) | Set loading prompt text     |
+   | setOnLoadingTextColor(loadingTextColorRes: Int) | Set the loading prompt text color   |
+   | setOnEmptyText(emptyText: String)        | Set the data prompt text    |
+   | setOnEmptyText(@StringRes emptyTextStringRes: Int) | Set the data prompt text    |
+   | setOnEmptyClickText(emptyClickText: String) | Set data empty click text    |
+   | setOnEmptyClickText(@StringRes emptyClickTextStringRes: Int) | Set data empty click text    |
+   | setOnEmptyTextColor(emptyTextStringRes: Int) | Set the data text color  |
+   | setOnEmptyClickTextColor(emptyClickTextColorRes: Int) | Set data empty click text color  |
+   | setOnErrorText(errorText: String)        | Set error text   |
+   | setOnErrorText(@StringRes errorTextStringRes: Int) | Set error text   |
+   | setOnErrorClickText(errorClickText: String) | Set data error click text   |
+   | setOnErrorClickText(@StringRes errorClickTextStringRes: Int) | Set data error click text   |
+   | setOnErrorTextColor(errorTextStringRes: Int) | Set the text color of the data error prompt |
+   | setOnErrorClickTextColor(errorClickTextColorRes: Int) | Set data error click text color |
 
-3. 配置图片
+3. Configure picture
 
-   | 方法名                                      | 说明       |
+   | Method name                                      | Explanation       |
    | ---------------------------------------- | -------- |
-   | setOnEmptyImg(@DrawableRes emptyImgID: Int) | 设置数据空图片  |
-   | setOnErrorImg(@DrawableRes errorImgID: Int) | 设置数据错误图片 |
+   | setOnEmptyImg(@DrawableRes emptyImgID: Int) | Set data empty picture  |
+   | setOnErrorImg(@DrawableRes errorImgID: Int) | Set data error picture |
 
-   ​
-
-## 版本开发记录
-
-#### v1.2.1
-
-- 修改方法名，避免与kotlin语法冲突
-
-#### v1.2.0
-
-- 添加了能修改加载布局提示字体颜色
-
-#### v1.1.1
-
-- 更改包名
-
-#### v1.1.0
-
-- 新增修改字体颜色
-
-#### v1.0.1
-
-- 优化布局和功能
-
-#### v1.0
-
-- 初始化提交
-- 支持加载布局，空数据布局，出错布局
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/F1ReKing/StatusLayout.svg)](https://starchart.cc/F1ReKing/StatusLayout)
-
+   
 ## License
 
 ```
