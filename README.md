@@ -3,6 +3,8 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/F1ReKing/StatusLayout/blob/master/LICENSE)
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
+> 零入侵布局，可切换数据状态
+
 一个在Android上可切换数据状态的布局，包含了加载布局，空数据布局，错误布局
 
 ## 特性
